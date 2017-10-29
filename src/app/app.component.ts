@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 
+const RockStyles: string[] = [
+  "Hard Rock",
+  "Punk",
+  'Heavy Metal'
+]
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +13,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  rockStyles = RockStyles;
 }
