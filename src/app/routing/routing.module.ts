@@ -3,7 +3,10 @@ import { RouterModule, Routes }   from '@angular/router';
 
 import { AppComponent } from '../app.component';
 import { MainPageComponent } from '../main-page/main-page.component';
-import { IssueListComponent } from '../issue-list/issue-list.component';
+import { IssueListComponent } from '../issue-list/issue-list.component'; 
+import { IssueDetailComponent } from "../issue-detail/issue-detail.component";  
+import { IssueFormComponent } from "../issue-form/issue-form.component";  
+
 
 const routes: Routes = [
   {
@@ -19,14 +22,14 @@ const routes: Routes = [
     path: 'issues',
     component: IssueListComponent
   },
-//   {
-//     path: 'issues/add',
-//     component: IssueFormComponent
-//   },
-//   {
-//     path: 'issues/:id',
-//     component: IssueDetailComponent
-//   },
+  {
+    path: 'issues/add',
+    component: IssueFormComponent
+  },
+  {
+    path: 'issues/:id',
+    component: IssueDetailComponent
+  },
 ];
 
 @NgModule({

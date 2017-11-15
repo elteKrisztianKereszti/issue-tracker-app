@@ -1,27 +1,30 @@
-<h1 class="display-2">My issues</h1>  
-<table class="table">  
-  <thead>  
-    <tr>  
-      <th scope="col">#</th>  
-      <th scope="col">Location</th>  
-      <th scope="col">Description</th>  
-    </tr>  
-  </thead>  
-  <tbody>  
-    <tr>  
-      <th scope="row">1</th>  
-      <td>Mark</td>  
-      <td>Otto</td>  
-    </tr>  
-    <tr>  
-      <th scope="row">2</th>  
-      <td>Jacob</td>  
-      <td>Thornton</td>  
-    </tr>  
-    <tr>  
-      <th scope="row">3</th>  
-      <td>Larry</td>  
-      <td>the Bird</td>  
-    </tr>  
-  </tbody>  
-</table>  
+<div class="row">
+  <div class="col">
+    <h1 class="display-2">My issues</h1>  
+
+    <status-filter [status]="selectedStatus" (onChange)="onFilterChange($event)"></status-filter>
+
+    <table class="table">  
+      <thead>  
+        <tr>  
+          <th scope="col">#</th>  
+          <th scope="col">Location</th>  
+          <th scope="col">Description</th>  
+        </tr>  
+      </thead>  
+      <tbody>  
+        <tr *ngFor="let issue of filteredIssues" (click)="onSelectIssue(issue)" [class.table-info]="issue === selectedIssue" >  
+          <th scope="row">{{ issue.id }}</th>  
+          <td>{{ issue.location }}</td>  
+          <td>{{ issue.description }}</td>  
+          <td>{{ issue.status }}</td>  
+        </tr>  
+      </tbody>  
+    </table>  
+    Selected issue: {{ selectedIssue | json }}
+  </div>
+  <div class="col" *ngIf="selectedIssue"> 
+    <issue-form [issue]="selectedIssue"></issue-form>
+  </div>
+
+</div>

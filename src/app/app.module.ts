@@ -5,21 +5,33 @@ import {
   MatToolbarModule,
   MatButtonModule,
   MatIconModule,
-  MatMenuModule
+  MatMenuModule,
+  // News
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonToggleModule
 } from '@angular/material'
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { IssueListComponent } from './issue-list/issue-list.component';
-import { RoutingModule } from './routing/routing.module';
-  
+import { RoutingModule } from './routing/routing.module'; 
+// News
+import { IssueFormComponent } from './issue-form/issue-form.component';
+import { IssueDetailComponent } from './issue-detail/issue-detail.component';
+import { FormsModule } from '@angular/forms';
+import { StatusFilterComponent } from './status-filter/status-filter.component';  
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
-    IssueListComponent
+    IssueListComponent,
+    IssueFormComponent,
+    IssueDetailComponent,
+    StatusFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -28,8 +40,17 @@ import { RoutingModule } from './routing/routing.module';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+
+    // news
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonToggleModule, 
+    //
+
     FlexLayoutModule,
-    RoutingModule
+    RoutingModule,
+    // News
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
