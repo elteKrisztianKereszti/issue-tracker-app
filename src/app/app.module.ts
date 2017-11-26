@@ -21,7 +21,8 @@ import { RoutingModule } from './routing/routing.module';
 import { IssueFormComponent } from './issue-form/issue-form.component';
 import { IssueDetailComponent } from './issue-detail/issue-detail.component';
 import { FormsModule } from '@angular/forms';
-import { StatusFilterComponent } from './status-filter/status-filter.component';  
+import { StatusFilterComponent } from './status-filter/status-filter.component';
+import { IssueService } from './issue.service';
 
 
 @NgModule({
@@ -52,7 +53,7 @@ import { StatusFilterComponent } from './status-filter/status-filter.component';
     // News
     FormsModule
   ],
-  providers: [],
+  providers: [IssueService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

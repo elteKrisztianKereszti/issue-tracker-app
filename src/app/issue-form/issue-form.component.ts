@@ -1,4 +1,4 @@
-import { Component, OnInit, Input  } from '@angular/core'; 
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter  } from '@angular/core'; 
 import { Issue } from '../Issue';
 
 @Component({
@@ -9,11 +9,23 @@ import { Issue } from '../Issue';
 export class IssueFormComponent implements OnInit {
 
   @Input() issue: Issue
+  model: Issue
+  @Output() onSubmit = new EventEmitter<Issue>();
 
   constructor() { }
 
   ngOnInit() {
   }
   
+  ngOnChanges() {
+    this.model = Object.assign({}, this.issue);
+  }
+  
+  submit(form) {
+    if (!form.valid) {
+      return;
+    }
+    this.onSubmit.emit(this.model);
+  }
 
 }

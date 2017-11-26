@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'issues',
-    component: IssueListComponent
+    component: IssueListComponent,
   },
   {
     path: 'issues/add',

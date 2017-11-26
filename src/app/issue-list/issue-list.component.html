@@ -1,30 +1,35 @@
 <div class="row">
   <div class="col">
-    <h1 class="display-2">My issues</h1>  
+    <h1 class="display-2">My issues</h1>
 
     <status-filter [status]="selectedStatus" (onChange)="onFilterChange($event)"></status-filter>
 
-    <table class="table">  
-      <thead>  
-        <tr>  
-          <th scope="col">#</th>  
-          <th scope="col">Location</th>  
-          <th scope="col">Description</th>  
-        </tr>  
-      </thead>  
-      <tbody>  
-        <tr *ngFor="let issue of filteredIssues" (click)="onSelectIssue(issue)" [class.table-info]="issue === selectedIssue" >  
-          <th scope="row">{{ issue.id }}</th>  
-          <td>{{ issue.location }}</td>  
-          <td>{{ issue.description }}</td>  
-          <td>{{ issue.status }}</td>  
-        </tr>  
-      </tbody>  
-    </table>  
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Location</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let issue of filteredIssues" (click)="onSelectIssue(issue)" [class.table-info]="issue === selectedIssue" >
+          <th scope="row">{{ issue.id }}</th>
+          <td>{{ issue.location }}</td>
+          <td>
+            <a [routerLink]="['/issues', issue.id]">
+              {{ issue.description }}
+            </a>
+          </td>
+          <td>{{ issue.status }}</td>
+        </tr>
+      </tbody>
+    </table>
     Selected issue: {{ selectedIssue | json }}
+    <button mat-raised-button color="primary" (click)="onNewClick()">New issue</button>
   </div>
-  <div class="col" *ngIf="selectedIssue"> 
-    <issue-form [issue]="selectedIssue"></issue-form>
+  <div class="col" *ngIf="selectedIssue">
+    <issue-form [issue]="selectedIssue" (onSubmit)="onFormSubmit($event)"></issue-form>
   </div>
 
 </div>
