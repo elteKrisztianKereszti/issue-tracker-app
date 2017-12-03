@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter  } from '@angular/core'; 
-import { Issue } from '../Issue';
+import { Issue } from '../../models/Issue';
 
 @Component({
   selector: 'issue-form',

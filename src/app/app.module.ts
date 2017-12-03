@@ -1,28 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import {
-  MatToolbarModule,
-  MatButtonModule,
-  MatIconModule,
-  MatMenuModule,
-  // News
-  MatFormFieldModule,
-  MatInputModule,
-  MatButtonToggleModule
-} from '@angular/material'
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http";
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { AppComponent } from './app.component';
-import { MainPageComponent } from './main-page/main-page.component';
-import { IssueListComponent } from './issue-list/issue-list.component';
+import { MaterialItemsModule } from "./modules/material-items.module";
+import { AppComponent } from './components/app/app.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { IssueListComponent } from './components/issue-list/issue-list.component';
+import { IssueFormComponent } from './components/issue-form/issue-form.component';
+import { IssueDetailComponent } from './components/issue-detail/issue-detail.component';
+import { IssueEditComponent } from './components/issue-edit/issue-edit.component';  
+import { StatusFilterComponent } from './components/status-filter/status-filter.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { LoginComponent } from './components/login/login.component';
+
+import { IssueService } from './services/issue.service'; 
+import { AuthService } from "./services/auth.service";  
+
 import { RoutingModule } from './routing/routing.module'; 
-// News
-import { IssueFormComponent } from './issue-form/issue-form.component';
-import { IssueDetailComponent } from './issue-detail/issue-detail.component';
-import { FormsModule } from '@angular/forms';
-import { StatusFilterComponent } from './status-filter/status-filter.component';
-import { IssueService } from './issue.service';
+import { AuthGuard } from './auth.guard'; 
 
 
 @NgModule({
@@ -32,28 +30,21 @@ import { IssueService } from './issue.service';
     IssueListComponent,
     IssueFormComponent,
     IssueDetailComponent,
-    StatusFilterComponent
+    StatusFilterComponent,
+    IssueEditComponent,
+    MenuComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-
-    // news
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonToggleModule, 
-    //
-
     FlexLayoutModule,
     RoutingModule,
-    // News
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    MaterialItemsModule
   ],
-  providers: [IssueService],
-  bootstrap: [AppComponent]
+  providers: [ IssueService, AuthService, AuthGuard ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

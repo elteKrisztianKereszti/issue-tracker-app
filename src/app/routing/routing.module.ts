@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes }   from '@angular/router';
 
-import { AppComponent } from '../app.component';
-import { MainPageComponent } from '../main-page/main-page.component';
-import { IssueListComponent } from '../issue-list/issue-list.component'; 
-import { IssueDetailComponent } from "../issue-detail/issue-detail.component";  
-import { IssueFormComponent } from "../issue-form/issue-form.component";  
-
+import { MainPageComponent } from "../components/main-page/main-page.component";
+import { IssueListComponent } from "../components/issue-list/issue-list.component";
+import { IssueDetailComponent } from "../components/issue-detail/issue-detail.component";
+import { IssueFormComponent } from "../components/issue-form/issue-form.component";
+import { IssueEditComponent } from "../components/issue-edit/issue-edit.component";
+import { LoginComponent } from "../components/login/login.component";
+import { AuthGuard } from "../auth.guard";
 
 const routes: Routes = [
   {
@@ -21,14 +23,30 @@ const routes: Routes = [
   {
     path: 'issues',
     component: IssueListComponent,
+    canActivate: [AuthGuard],
+    data: {roles: ['USER', 'ADMIN']}
   },
   {
-    path: 'issues/add',
-    component: IssueFormComponent
+    path: 'issues/new',
+    component: IssueEditComponent,
+    canActivate: [AuthGuard],
+    data: {roles: ['USER', 'ADMIN']}
   },
   {
     path: 'issues/:id',
-    component: IssueDetailComponent
+    component: IssueDetailComponent,
+    canActivate: [AuthGuard],
+    data: {roles: ['USER', 'ADMIN']}
+  },
+  {
+    path: 'issues/:id/edit',
+    component: IssueEditComponent,
+    canActivate: [AuthGuard],
+    data: {roles: ['ADMIN']}
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
 ];
 
